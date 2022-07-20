@@ -412,7 +412,7 @@ export type CellFormat =
   | Map<string | number, any>;
 
 // @ts-ignore
-export interface BasicColumn extends ColumnProps {
+export interface BasicColumn extends ColumnProps<Recordable> {
   children?: BasicColumn[];
   filters?: {
     text: string;
@@ -463,6 +463,8 @@ export interface BasicColumn extends ColumnProps {
     column: BasicColumn;
     index: number;
   }) => VNodeChild | JSX.Element;
+  // 动态 Disabled
+  editDynamicDisabled?: boolean | ((record: Recordable) => boolean);
 }
 
 export type ColumnChangeParam = {
